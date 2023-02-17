@@ -1,0 +1,37 @@
+#!/bin/bash
+#SBATCH -c 11
+export OMP_NUM_THREADS=1
+
+REGION=$1
+source $2
+
+# cp analysis script to tempdir
+cp $SCRIPTS/regions.R $TMPDIR
+
+# cp data to tempdir
+INPUT_INFO=input.info.reg.txt	 		# input info file name
+cp $GTEXv8/$LOCFILE $TMPDIR			# full locus file
+cp $DATA/depression.sumstats.txt $TMPDIR  	# depression sumstats
+cp $MRI/../$INPUT_INFO $TMPDIR			# cp input info file
+cp $REFDIR/$REFDAT* $TMPDIR			# g1000 referene data
+cp $MRI/sample.overlap.reg.dat $TMPDIR		# sample overlap file
+cp $MRI/${REGION}*txt $TMPDIR			# mri region sumstats
+
+# move to tmp
+cd $TMPDIR
+
+# check whether you have lateralisation (based on number of sumstats files) & define input phenotypes accordingly
+N_REGIONS=$(ls ${REGION}*txt | wc -w)
+
+if [[ $N_REGIONS == 2 ]]; then
+	PHENOS="${REGION}_left;${REGION}_right;depression"
+else
+	PHENOS="$REGION;depression"
+fi
+
+# analyse 
+Rscript regions.R $REFDAT $LOCFILE $INPUT_INFO $PHENOS sample.overlap.dat $REGION 
+
+# copy
+cp $REGION.univ $REGION.bivar $OUT/mri
+if [[ $N_REGIONS == 2 ]]; then cp $REGION.cor $OUT/mri; fi 

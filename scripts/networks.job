@@ -1,0 +1,32 @@
+#!/bin/bash
+#SBATCH -c 16
+export OMP_NUM_THREADS=1
+
+NETWORK=$1
+source $2
+
+# cp analysis script to temp
+cp $SCRIPTS/networks.R $TMPDIR
+
+# data
+INPUT_INFO=input.info.net.txt							# input info file
+cp $GTEXv8/$LOCFILE $TMPDIR							# full locus file
+cp $DATA/depression.sumstats.txt $TMPDIR  					# depression sumstats
+cp $NET/$INPUT_INFO $TMPDIR							# input info file
+cp $REFDIR/$REFDAT* $TMPDIR							# g1000 referene data
+cp $NET/sample.overlap.net.dat $TMPDIR						# sample overlap 
+
+# get mri sumstats
+cp $NET/data/${NETWORK}*txt ${TMPDIR}
+
+# move to tmp
+cd $TMPDIR
+
+# define  phenotypes
+PHENOS="$NETWORK;depression"
+
+# analyse
+Rscript networks.R $REFDAT $LOCFILE $INPUT_INFO $PHENOS sample.overlap.dat $NETWORK
+
+# copy
+cp $NETWORK.univ $NETWORK.bivar $OUT/networks

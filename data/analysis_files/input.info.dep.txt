@@ -1,0 +1,2 @@
+phenotype cases controls filename
+depression 170756 329443 depression.sumstats.txt

@@ -1,0 +1,1 @@
+gencode.v26.GRCh38.protein_coding.1Mb-cis.SNP-IDs.dbsnp-g1000-subset.loci.gz filter=lfs diff=lfs merge=lfs -text

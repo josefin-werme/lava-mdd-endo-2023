@@ -1,0 +1,2 @@
+locus chr n.snps n.pcs phen1 phen2 rho rho.lower rho.upper r2 r2.lower r2.upper p
+ENSG00000113649.11__chr5:146459337:146463551:clu_23484 5 4131 75 depression sqtl 0.221208 -0.06032 0.52585 0.0489329 0 0.27652 0.126511

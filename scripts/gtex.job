@@ -1,0 +1,29 @@
+#!/bin/bash
+#SBATCH -c 11
+export OMP_NUM_THREADS=1
+
+source $1 	# settings file 
+TISSUE=$2	# tissue
+QTL=$3		# eqtl/sqtl
+CHR=$4		# chromosome
+
+# cp analysis script to tempdir
+cp $SCRIPTS/gtex.R $TMPDIR
+
+# cp data to tempdir
+INPUT_INFO=input.info.dep.txt				# input info file (only for depression)
+tar xf $GTEX/lava/$QTL.tar -C $TMPDIR			# eqtl/sqtl analysis files
+cp $DATA/depression.sumstats.txt $TMPDIR  		# depression sumstats
+cp $DATA/$INPUT_INFO $TMPDIR				# input info file
+cp $REFDIR/$REFDAT* $TMPDIR				# g1000 referene data
+
+# move to tmp
+cd $TMPDIR
+
+OUTNAME=$TISSUE.chr$CHR
+
+# analyse 
+Rscript gtex.R $REFDAT $INPUT_INFO $TISSUE $QTL $CHR $OUTNAME
+
+# copy
+cp $OUTNAME.univ $OUTNAME.bivar $OUT/$QTL
