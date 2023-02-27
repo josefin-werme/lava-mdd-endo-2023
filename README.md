@@ -1,4 +1,4 @@
-This repository contains the results and analysis scripts from the article [paper title], [preprint link]. In this article, we used LAVA to perform local genetic correlation analyses between depression and endophenotypes across different levels of function (gene expression & splicing, regional brain volume, and brain network connectivity). 
+This repository contains the results and analysis scripts from the article **"Local genetic correlation analysis links depression with molecular and brain imaging endophenotypes"** (Werme, J., Tissink, E.P., de Lange, S.C., van den Heuvel, M.P., Posthuma, D. & de Leeuw, C.A.), [preprint link]. In this article, we used LAVA to perform local genetic correlation analyses between depression and endophenotypes across different levels of function (gene expression & splicing, regional brain volume, and brain network connectivity). 
 
 
 ### Results
