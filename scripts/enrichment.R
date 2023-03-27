@@ -5,12 +5,12 @@ setwd("~/Documents/GitHub/mdd-endo-scripts-and-data2023") ### NOTE: THIS NEEDS T
 ######## READ IN ALL THE DATA ########
 ######################################
 ## Gene file + GTEx tissues
-tissues = read.table("data/analysis_files/tissues_old_v_new.txt", header=T, stringsAsFactors = F)
+tissues = read.table("scripts/tissues.txt", header=F, stringsAsFactors = F)$V1
 g = fread("data/analysis_files/gencode.v26.GRCh38.protein_coding.gtf",header=F, sep=" ") # protein coding genes
 
 #### read in eQTLs
 e = list()
-for (i in tissues$new) {
+for (i in tissues) {
 	e[[i]] = fread(paste0("data/results/local_rg/eqtl/",i,".chrall.bivar"), data.table=F, header=T)
 	e[[i]]$gene = g[match(e[[i]]$locus, g$V7),]$V9
 	e[[i]]$tissue = i
@@ -23,7 +23,7 @@ e = subset(e,!is.na(gene)) # remove non-coding genes (these were not meant to be
 
 #### read in sQTLs
 s = list()
-for (i in tissues$new) {
+for (i in tissues) {
 	s[[i]] = NULL
 	for (j in 1:22) {
 		# check that all files exist since try is used below (with silent=T since those errors are not informative and clogs the terminal)
@@ -45,31 +45,26 @@ s = subset(s,!is.na(gene)) # remove non-coding genes (these were never meant to 
 
 
 #### read in MRI
-regions = read.table("data/analysis_files/regions_meta.txt",header=F, stringsAsFactors=F)
+regions = read.table("scripts/regions.txt",header=F, stringsAsFactors=F)$V1
 
-mri.b = mri.c = list()
-for (i in 1:nrow(regions)) {
-	infile = paste0("data/results/local_rg/regions/",regions[i,],".bivar")
+mri.b = list()
+for (i in regions) {
+	infile = paste0("data/results/local_rg/regions/",i,".bivar")
 	mri.b[[i]] = fread(infile, data.table=F)
 	mri.b[[i]]$gene = g[match(mri.b[[i]]$locus, g$V7),]$V9
-	names(mri.b)[i] = regions[i,]
 }
 m.dat = do.call(rbind, mri.b)
 
-
 #### read in networks
-networks = read.table("data/analysis_files/networks.txt",header=F, stringsAsFactors=F)
+networks = read.table("scripts/networks.txt",header=F, stringsAsFactors=F)$V1
 
 net.b  = list()
-for (i in 1:nrow(networks)) {
-	infile = paste0("data/results/local_rg/networks/",networks[i,],".bivar")
+for (i in networks) {
+	infile = paste0("data/results/local_rg/networks/",i,".bivar")
 	net.b[[i]] = fread(infile, data.table=F)
 	net.b[[i]]$gene = g[match(net.b[[i]]$locus, g$V7),]$V9
-	names(net.b)[i] = networks[i,]
 }
-
 net = do.call(rbind, net.b)
-
 
 
 
@@ -190,11 +185,9 @@ write.table(m.enrich.out, "enrichment.significant.txt", row.names=F, quote=F, se
 
 
 # Save all other results
-for (i in tissues$new) {
+for (i in tissues) {
 	write.table(exp.enrich[[i]], paste0('data/results/enrichment/eqtl/',i,".txt"), row.names=F, quote=F, sep="\t")
 	write.table(splic.enrich[[i]], paste0('data/results/enrichment/sqtl/',i,".txt"), row.names=F, quote=F, sep="\t")
 }
-for (i in regions$V1) { write.table(mri.enrich[[i]], paste0('data/results/enrichment/regions/',i,".txt"), row.names=F, quote=F, sep="\t") }
-for (i in networks$V1) { write.table(net.enrich[[i]], paste0('data/results/enrichment/networks/',i,".txt"), row.names=F, quote=F, sep="\t") }
-
-
+for (i in regions) { write.table(mri.enrich[[i]], paste0('data/results/enrichment/regions/',i,".txt"), row.names=F, quote=F, sep="\t") }
+for (i in networks) { write.table(net.enrich[[i]], paste0('data/results/enrichment/networks/',i,".txt"), row.names=F, quote=F, sep="\t") }
