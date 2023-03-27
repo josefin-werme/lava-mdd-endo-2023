@@ -1,0 +1,2 @@
+id	or	p	ens.ids	gene.names
+GO_cc:go_mitochondrion	Inf	0.0835622829292463	ENSG00000204564	C6orf136

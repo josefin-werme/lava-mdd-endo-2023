@@ -1,0 +1,17 @@
+endoph	id	or	p	gene.names
+precentral	GO_bp:go_cellular_response_to_zinc_ion	4670.17	3.9e-21	MT1E;MT1M;MT1A;MT1B;MT1F;MT1G;MT1H
+precentral	GO_bp:go_response_to_zinc_ion	914.93	1.1e-16	MT1E;MT1M;MT1A;MT1B;MT1F;MT1G;MT1H
+precentral	GO_bp:go_cellular_response_to_cadmium_ion	1787.03	3.4e-14	MT1E;MT1A;MT1F;MT1G;MT1H
+precentral	GO_bp:go_response_to_transition_metal_nanoparticle	319.21	1.4e-13	MT1E;MT1M;MT1A;MT1B;MT1F;MT1G;MT1H
+precentral	GO_bp:go_cellular_response_to_inorganic_substance	299.92	2.2e-13	MT1E;MT1M;MT1A;MT1B;MT1F;MT1G;MT1H
+precentral	GO_bp:go_negative_regulation_of_growth	194.75	4.2e-12	MT1E;MT1M;MT1A;MT1B;MT1F;MT1G;MT1H
+precentral	GO_bp:go_response_to_cadmium_ion	534	7.4e-12	MT1E;MT1A;MT1F;MT1G;MT1H
+precentral	GO_bp:go_response_to_metal_ion	136.19	4.6e-11	MT1E;MT1M;MT1A;MT1B;MT1F;MT1G;MT1H
+precentral	GO_bp:go_response_to_inorganic_substance	93.97	5.7e-10	MT1E;MT1M;MT1A;MT1B;MT1F;MT1G;MT1H
+precentral	GO_bp:go_regulation_of_growth	70.4	4e-09	MT1E;MT1M;MT1A;MT1B;MT1F;MT1G;MT1H
+precentral	GO_cc:go_perinuclear_region_of_cytoplasm	68.67	4.8e-09	MT1E;MT1M;MT1A;MT1B;MT1F;MT1G;MT1H
+precentral	GO_mf:go_zinc_ion_binding	37.92	2.3e-07	MT1E;MT1M;MT1A;MT1B;MT1F;MT1G;MT1H
+precentral	GO_mf:go_transition_metal_ion_binding	30.85	8.6e-07	MT1E;MT1M;MT1A;MT1B;MT1F;MT1G;MT1H
+pallidum	GO_mf:go_triglyceride_lipase_activity	584.38	6.8e-08	PNLIPRP3;PNLIP;PNLIPRP1
+putamen	GO_mf:go_triglyceride_lipase_activity	584.38	6.8e-08	PNLIPRP3;PNLIP;PNLIPRP1
+pars_triangularis	GO_bp:go_hyaluronan_metabolic_process	408.94	2.1e-07	ITIH1;ITIH3;ITIH4

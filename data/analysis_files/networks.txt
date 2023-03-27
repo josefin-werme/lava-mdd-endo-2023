@@ -1,0 +1,16 @@
+FC_Default
+FC_Dorsal_Attention
+FC_Frontoparietal
+FC_global_fc_gmean
+FC_Limbic
+FC_Somatomotor
+FC_Ventral_Attention
+FC_Visual
+SC_Default
+SC_Dorsal_Attention
+SC_Frontoparietal
+SC_global_sc_fa
+SC_Limbic
+SC_Somatomotor
+SC_Ventral_Attention
+SC_Visual

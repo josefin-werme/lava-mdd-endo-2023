@@ -1,0 +1,4 @@
+id	or	p	ens.ids	gene.names
+Canonical_pathway:reactome_generic_transcription_pathway	Inf	0.0174692861951087	ENSG00000096654	ZNF184
+GO_mf:go_zinc_ion_binding	Inf	0.0582655124148101	ENSG00000096654	ZNF184
+GO_mf:go_transition_metal_ion_binding	Inf	0.0706547094501343	ENSG00000096654	ZNF184

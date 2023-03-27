@@ -1,0 +1,6 @@
+id	or	p	ens.ids	gene.names
+GO_mf:go_g_protein_coupled_receptor_activity	Inf	0.0409517391527957	ENSG00000165621	OXGR1
+GO_bp:go_g_protein_coupled_receptor_signaling_pathway	Inf	0.0564511948576673	ENSG00000165621	OXGR1
+GO_mf:go_signaling_receptor_activity	Inf	0.0670779119793681	ENSG00000165621	OXGR1
+GO_mf:go_receptor_activity	Inf	0.0801409983932688	ENSG00000165621	OXGR1
+GO_mf:go_signal_transducer_activity	Inf	0.084339847597119	ENSG00000165621	OXGR1
